@@ -16,4 +16,9 @@ export class AppComponent {
     this.socket.on('disconnect',() => { console.log("desconectado");this.caso=false });
   }
 
+  enviar(caja:string){
+    console.log("ENVIADA");
+    this.socket.emit('angularmsg',{fecha:Date(),caja});
+  }
+
 }
