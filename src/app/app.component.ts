@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { io,Socket} from 'socket.io-client';
+import { io } from 'socket.io-client';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +9,11 @@ import { io,Socket} from 'socket.io-client';
 export class AppComponent {
   title = 'socketiofront';
   socket = io('http://localhost:8000');
+  caso!:boolean;
   
   constructor(){
-    this.socket.on('connect',() => {
-      console.log("conectado");
-    });
+    this.socket.on('connect',() => { console.log("conectado");this.caso=true });
+    this.socket.on('disconnect',() => { console.log("desconectado");this.caso=false });
   }
 
 }
