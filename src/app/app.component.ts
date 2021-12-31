@@ -9,11 +9,13 @@ import { io } from 'socket.io-client';
 export class AppComponent {
   title = 'socketiofront';
   socket = io('http://localhost:8000');
+  mensajes:string[] = [];
   caso!:boolean;
   
   constructor(){
     this.socket.on('connect',() => { console.log("conectado");this.caso=true });
     this.socket.on('disconnect',() => { console.log("desconectado");this.caso=false });
+    this.socket.on('vueltamsg',(msg:string) => { this.mensajes.unshift(msg) });
   }
 
   enviar(caja:string){
