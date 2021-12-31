@@ -20,7 +20,9 @@ export class AppComponent {
 
   enviar(caja:string){
     console.log("ENVIADA");
-    this.socket.emit('angularmsg',{fecha:Date(),caja});
+    this.socket.emit('angularmsg',{fecha:Date(),caja},(id:string) => {
+      console.log("DESDE EL SERVER",id);
+    });
   }
 
 }
