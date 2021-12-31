@@ -1,0 +1,14 @@
+<h1>Socket.io - Angular FRONT</h1>
+
+<h1 *ngIf="caso" style="color: green;" >CONECTADO</h1>
+<h1 *ngIf="!caso" style="color: red ;" >DESCONECTADO</h1>
+
+<input type="text" #cajadetexto>
+<button (click)="enviar(cajadetexto.value)">ENVIAR</button>
+
+<div class="container mt-5">
+    <div class="row" *ngFor="let msg of mensajes" >
+        <div class="col">{{msg}}</div>
+    </div>
+</div>
+<button routerLink="">ATRAS</button>
