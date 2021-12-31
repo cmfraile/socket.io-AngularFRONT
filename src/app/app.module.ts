@@ -5,16 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FundamentosComponent } from './componentes/fundamentos/fundamentos.component';
 import { MAINComponent } from './componentes/main/main.component';
+import { AppcolaComponent } from './componentes/appcola/appcola.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     FundamentosComponent,
-    MAINComponent
+    MAINComponent,
+    AppcolaComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
