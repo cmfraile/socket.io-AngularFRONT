@@ -100,7 +100,8 @@
             "inlineStyleLanguage": "sass",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/app/componentes/appcola/assets"
             ],
             "styles": [
               "src/styles.sass"

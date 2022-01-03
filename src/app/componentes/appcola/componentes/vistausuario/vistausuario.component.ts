@@ -9,13 +9,16 @@ import { ServicioappcolaService } from '../../servicioappcola.service';
 })
 export class VistausuarioComponent implements OnInit {
 
-  constructor( private _l:Location , public _sap:ServicioappcolaService ){}
+  test = new Audio('../../assets/noti.mp3');
+  
+  constructor( private _l:Location , public _sap:ServicioappcolaService ){
+    this.test.load();
+  }
 
   ngOnInit(): void {}
 
   back(){
-    //this._l.back();
-    const test = new Audio('../../assets/noti.mp3'); test.load() ; test.play();
+    this.test.play();
   }
 
 }
