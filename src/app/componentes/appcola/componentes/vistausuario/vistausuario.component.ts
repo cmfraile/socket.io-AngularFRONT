@@ -18,7 +18,7 @@ export class VistausuarioComponent implements OnInit {
   ngOnInit(): void {}
 
   back(){
-    this.test.play();
+    //this.test.play();
   }
 
 }
