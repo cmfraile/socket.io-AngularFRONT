@@ -1,14 +1,29 @@
-<div class="container">
+<div class="container" *ngIf="_r.url == '/appcola'" >
     <div class="row"><div class="col"><h1>Aplicacion de COLA</h1></div></div>
     <div class="row">
-        <div class="col"><button routerLink="vistausuario" >VISTA DEL USUARIO</button></div>
-        <div class="col"><button>CREAR TICKET</button></div>
+        <div class="col">
+            <button routerLink="vistausuario">VISTA DEL USUARIO</button>
+            <button (click)="crearticket()" >CREAR TICKET</button>
+            <div class="ticketempleado" *ngFor="let ti of tickets" >
+                <span>{{ti.cliente}}</span>
+                <span>{{ti.restante}}</span>
+            </div>
+        </div>
         <div class="col">
             <h3>VISTA DE EMPLEADOS:</h3>
-            <button>EMPLEADO 1</button>
-            <button>EMPLEADO 1</button>
-            <button>EMPLEADO 1</button>
+            <div class="vistaempleado">
+                <button (click)="atenderticket('uno')" >SIGUIENTE</button>
+                <div class="atendiendo"><span *ngIf="_sap.atendidos.uno.cliente" >Atendiendo a:</span><span>{{_sap.atendidos.uno.cliente}}</span></div>
+            </div>
+            <div class="vistaempleado">
+                <button (click)="atenderticket('dos')" >SIGUIENTE</button>
+                <div class="atendiendo"><span *ngIf="_sap.atendidos.dos.cliente" >Atendiendo a:</span><span>{{_sap.atendidos.dos.cliente}}</span></div>
+            </div>
+            <div class="vistaempleado">
+                <button (click)="atenderticket('tres')" >SIGUIENTE</button>
+                <div class="atendiendo"><span *ngIf="_sap.atendidos.tres.cliente" >Atendiendo a:</span><span>{{_sap.atendidos.tres.cliente}}</span></div>
+            </div>
         </div>
-        <router-outlet></router-outlet>
     </div>
 </div>
+<router-outlet></router-outlet>

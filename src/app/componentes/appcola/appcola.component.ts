@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ServicioappcolaService } from './servicioappcola.service';
 
 @Component({
@@ -8,8 +9,36 @@ import { ServicioappcolaService } from './servicioappcola.service';
 })
 export class AppcolaComponent implements OnInit {
 
-  constructor( private _sap:ServicioappcolaService ){
-    this._sap.traerpersonajes().subscribe(console.log);
+  digimones!:string[];
+  tickets:any[] = [];
+  
+  constructor( public _sap:ServicioappcolaService , public _r:Router ){
+    this._sap.traerpersonajes().subscribe(resp => this.digimones = resp);
+    setInterval(() => {
+      this.tickets.forEach((x:any) => {
+        const restartiempo = () => {
+          let secs = Math.round((Date.now() - Date.parse(x.fecha))/1000);
+          return `${Math.floor(secs/60) < 10 ? '0' : ''}${Math.floor(secs/60)}:${(Math.round(secs%60) < 10 ? '0':'')}${Math.round(secs%60)}`
+        }
+        x.restante = restartiempo();
+      });
+    },15000);
+  }
+
+  crearticket(){
+    this.tickets.push({cliente:this.digimones.pop()||"",fecha:new Date(),restante:'00:00'});
+  }
+
+  atenderticket(puesto:string){
+    if(this.tickets.length == 0){return};
+    let comparativo:number = 0;
+    let caso!:any;
+    this.tickets.forEach( (x:any) => {
+      let comblando = Date.now() - x.fecha.getTime();
+      if(comblando > comparativo){caso = x};
+    });
+    this._sap.atendidos[puesto] = caso;
+    this.tickets.splice(this.tickets.indexOf(caso),1);
   }
 
   ngOnInit(): void {}

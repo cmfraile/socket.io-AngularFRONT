@@ -7,6 +7,12 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ServicioappcolaService {
+
+  atendidos:any = {
+    uno : {},
+    dos : {},
+    tres : {},
+  };
   
   constructor( private _hc:HttpClient ){}
 
@@ -20,5 +26,5 @@ export class ServicioappcolaService {
       })
     );
   }
-
+  
 }

@@ -1,1 +1,20 @@
-<p>vistausuario works!</p>
+<div class="container">
+    <div class="row">
+        <!-- <img src="../../assets/mh.jpeg" alt=""> -->
+        <div class="col lista">
+            <div class="llamada">
+                <span>{{_sap.atendidos.uno.cliente}}</span>
+                <span>MESA 1</span>
+            </div>
+            <div class="llamada">
+                <span>{{_sap.atendidos.dos.cliente}}</span>
+                <span>MESA 2</span>
+            </div>
+            <div class="llamada">
+                <span>{{_sap.atendidos.tres.cliente}}</span>
+                <span>MESA 3</span>
+            </div>
+        </div>
+    </div>
+</div>
+<button (click)="back()" class="botonback">VOLVER A VISTA DE EMPLEADO</button>
