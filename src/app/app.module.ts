@@ -6,18 +6,22 @@ import { FundamentosComponent } from './componentes/fundamentos/fundamentos.comp
 import { MAINComponent } from './componentes/main/main.component';
 import { AppcolaComponent } from './componentes/appcola/appcola.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { VistausuarioComponent } from './componentes/appcola/componentes/vistausuario/vistausuario.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FundamentosComponent,
     MAINComponent,
-    AppcolaComponent
+    AppcolaComponent,
+    VistausuarioComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

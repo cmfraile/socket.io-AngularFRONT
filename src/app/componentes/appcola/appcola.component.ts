@@ -38,6 +38,7 @@ export class AppcolaComponent implements OnInit {
       if(comblando > comparativo){caso = x};
     });
     this._sap.atendidos[puesto] = caso;
+    this._sap.atendidos[puesto].horatencion = new Date();
     this.tickets.splice(this.tickets.indexOf(caso),1);
   }
 
