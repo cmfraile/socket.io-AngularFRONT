@@ -21,6 +21,7 @@ export class ServicioappcolaService {
   constructor( private _hc:HttpClient ){
     this.socket.on('connect',() => {this.conexionstatus = true});
     this.socket.on('disconnect',() => {this.conexionstatus = false});
+    this.socket.on('vueltaticket',console.log);
   }
 
   traerpersonajes(){
