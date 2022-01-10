@@ -14,7 +14,7 @@ export class AppcolaComponent implements OnInit {
   
   constructor( public _sap:ServicioappcolaService , public _r:Router ){
     
-    /*this._sap.traerpersonajes().subscribe(resp => this.digimones = resp);
+    this._sap.traerpersonajes().subscribe(resp => this.digimones = resp);
     setInterval(() => {
       this.tickets.forEach((x:any) => {
         const restartiempo = () => {
@@ -23,15 +23,17 @@ export class AppcolaComponent implements OnInit {
         }
         x.restante = restartiempo();
       });
-    },15000);*/
-
+    },15000);
 
   }
 
   crearticket(){
     /*ESTA LINEA FUNCIONA
     this._sap.socket.emit('crearticket',undefined,console.log);*/
-    this._sap.socket.emit('crearticket',console.log);
+    this._sap.socket.emit('crearticket',(ticket:any) => {
+      ticket.fecha = new Date() ; ticket.restante = '00:00';
+      this.tickets.push(ticket);
+    });
   }
 
   atenderticket(puesto:string){

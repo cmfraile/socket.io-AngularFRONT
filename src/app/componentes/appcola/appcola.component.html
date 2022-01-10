@@ -8,7 +8,7 @@
             <button routerLink="vistausuario">VISTA DEL USUARIO</button>
             <button (click)="crearticket()" >CREAR TICKET</button>
             <div class="ticketempleado" *ngFor="let ti of tickets" >
-                <span>{{ti.cliente}}</span>
+                <span>{{ti.usuario}}</span>
                 <span>{{ti.restante}}</span>
             </div>
         </div>
