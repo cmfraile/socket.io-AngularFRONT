@@ -29,7 +29,9 @@ export class AppcolaComponent implements OnInit {
   }
 
   crearticket(){
-    this._sap.socket.emit('crearticket',undefined,console.log);
+    /*ESTA LINEA FUNCIONA
+    this._sap.socket.emit('crearticket',undefined,console.log);*/
+    this._sap.socket.emit('crearticket',console.log);
   }
 
   atenderticket(puesto:string){

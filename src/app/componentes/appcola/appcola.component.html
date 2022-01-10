@@ -1,4 +1,7 @@
-<div class="container" *ngIf="_r.url == '/appcola'" >
+<div [ngClass]="{'container conectando':true,'off':_sap.conexionstatus}"><div class="row"><div class="col">
+    <p>conectando con el servidor</p>
+</div></div></div>
+<div [ngClass]="{'container':true,'off':!_sap.conexionstatus}" *ngIf="_r.url == '/appcola'" >
     <div class="row"><div class="col"><h1>Aplicacion de COLA</h1></div></div>
     <div class="row">
         <div class="col">
