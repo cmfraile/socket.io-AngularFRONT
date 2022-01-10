@@ -8,6 +8,7 @@ import { AppcolaComponent } from './componentes/appcola/appcola.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { VistausuarioComponent } from './componentes/appcola/componentes/vistausuario/vistausuario.component';
+import { CallbacksComponent } from './componentes/callbacks/callbacks.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { VistausuarioComponent } from './componentes/appcola/componentes/vistaus
     FundamentosComponent,
     MAINComponent,
     AppcolaComponent,
-    VistausuarioComponent
+    VistausuarioComponent,
+    CallbacksComponent
   ],
   imports: [
     BrowserModule,
