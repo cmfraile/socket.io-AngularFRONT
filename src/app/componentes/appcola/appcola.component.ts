@@ -13,7 +13,8 @@ export class AppcolaComponent implements OnInit {
   tickets:any[] = [];
   
   constructor( public _sap:ServicioappcolaService , public _r:Router ){
-    this._sap.traerpersonajes().subscribe(resp => this.digimones = resp);
+    
+    /*this._sap.traerpersonajes().subscribe(resp => this.digimones = resp);
     setInterval(() => {
       this.tickets.forEach((x:any) => {
         const restartiempo = () => {
@@ -22,17 +23,18 @@ export class AppcolaComponent implements OnInit {
         }
         x.restante = restartiempo();
       });
-    },15000);
+    },15000);*/
+
+
   }
 
   crearticket(){
-    //this.tickets.push({cliente:this.digimones.pop()||"",fecha:new Date(),restante:'00:00'});
-    console.clear();
-    //this._sap.socket.emit('generarticket','SERVER <<< CLIENTE',console.log);
+    this._sap.socket.emit('crearticket',undefined,console.log);
   }
 
   atenderticket(puesto:string){
-    if(this.tickets.length == 0){return};
+    console.log(`Atender ticket desde el puesto [${puesto}]`);
+    /*if(this.tickets.length == 0){return};
     let comparativo:number = 0;
     let caso!:any;
     this.tickets.forEach( (x:any) => {
@@ -41,7 +43,7 @@ export class AppcolaComponent implements OnInit {
     });
     this._sap.atendidos[puesto] = caso;
     this._sap.atendidos[puesto].horatencion = new Date();
-    this.tickets.splice(this.tickets.indexOf(caso),1);
+    this.tickets.splice(this.tickets.indexOf(caso),1);*/
   }
 
   ngOnInit(): void {}

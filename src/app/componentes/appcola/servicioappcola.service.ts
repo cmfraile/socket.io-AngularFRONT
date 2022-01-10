@@ -14,16 +14,12 @@ export class ServicioappcolaService {
     dos : {},
     tres : {},
   };
-  //socket = io('http://localhost:8000');
+  socket = io('http://localhost:8000');
   conexionstatus:boolean = false;
   
-  
   constructor( private _hc:HttpClient ){
-    /*
     this.socket.on('connect',() => {this.conexionstatus = true});
     this.socket.on('disconnect',() => {this.conexionstatus = false});
-    this.socket.on('vueltaticket',console.log);
-    */
   }
 
   traerpersonajes(){
