@@ -15,7 +15,7 @@ export class FundamentosComponent implements OnInit {
   constructor(){
     this.socket.on('connect',() => { console.log("conectado");this.caso=true });
     this.socket.on('disconnect',() => { console.log("desconectado");this.caso=false });
-    this.socket.on('vueltamsg',(msg:string) => { this.mensajes.unshift(msg) });
+    this.socket.on('vueltamsg',(msg:string) => { console.log(msg) });
   }
 
   enviar(caja:string){

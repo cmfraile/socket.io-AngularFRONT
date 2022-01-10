@@ -28,7 +28,7 @@ export class AppcolaComponent implements OnInit {
   crearticket(){
     //this.tickets.push({cliente:this.digimones.pop()||"",fecha:new Date(),restante:'00:00'});
     console.clear();
-    this._sap.socket.emit('generarticket','SERVER <<< CLIENTE',console.log);
+    //this._sap.socket.emit('generarticket','SERVER <<< CLIENTE',console.log);
   }
 
   atenderticket(puesto:string){
