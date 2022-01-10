@@ -1,5 +1,12 @@
 <div [ngClass]="{'container':true,'on':conexionstatus,'off':!conexionstatus}">
-
+    <div class="row">
+        <div class="col">
+            <div *ngFor="let x of data">{{x}}</div>
+        </div>
+        <div class="col">
+            <button (click)="emision()" >boton de envio</button>
+        </div>
+    </div>
     <button (click)="_l.back()" class="botonback">Volver a menu principal</button>
 </div>
 
