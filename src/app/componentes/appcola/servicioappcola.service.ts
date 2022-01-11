@@ -29,19 +29,9 @@ export class ServicioappcolaService {
   
   }
 
-  traerpersonajes(){
-    return this._hc.get('https://digimon-api.herokuapp.com/api/digimon').pipe(
-      map((resp:any) => {
-        let acumular:string[] = [];
-        resp.forEach((x:any) => {acumular.push(x.name)});
-        acumular = arrayShuffle(acumular);
-        return acumular;
-      })
-    );
-  }
-
   traertickets(){
     this._hc.get(`${this.url}/api/tickets`).pipe(tap(console.log)).subscribe((resp:any) => {
+      this.tickets = [];
       resp.forEach( (x:any) => {
         if(x.llamado == null && x.agente == null){this.tickets.push(x)}else{
           this.atendidos[`${x.agente}`] = x;

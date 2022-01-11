@@ -8,12 +8,9 @@ import { ServicioappcolaService } from './servicioappcola.service';
   styleUrls: ['./appcola.component.sass']
 })
 export class AppcolaComponent implements OnInit {
-
-  digimones!:string[];
   
   constructor( public _sap:ServicioappcolaService , public _r:Router ){
-    
-    this._sap.traerpersonajes().subscribe(resp => this.digimones = resp);
+
     setInterval(() => {
       this._sap.tickets.forEach((x:any) => {
         const restartiempo = () => {
@@ -37,6 +34,18 @@ export class AppcolaComponent implements OnInit {
 
   atenderticket(puesto:string){
     console.log(`Atender ticket desde el puesto [${puesto}]`);
+    if(this._sap.tickets.length == 0){return}
+    let comparativo:number = 0;
+    let caso!:any;
+    this._sap.tickets.forEach((x:any) => {
+      let comblando = Date.now() - Date.parse(x.creado);
+      if(comblando > comparativo){caso = x}
+    });
+    this._sap.socket.emit('atenderticket',{id:caso._id,puesto},async(callback:any) => {
+      this._sap.atendidos[callback.agente] = callback;
+    });
+
+
     /*if(this.tickets.length == 0){return};
     let comparativo:number = 0;
     let caso!:any;
