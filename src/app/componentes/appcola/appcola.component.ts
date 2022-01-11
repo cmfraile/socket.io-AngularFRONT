@@ -34,6 +34,9 @@ export class AppcolaComponent implements OnInit {
   }
 
   async atenderticket(puesto:string){
+    if(this._sap.atendidos[puesto].usuario !== undefined){
+      this._sap.socket.emit('borrarticket',this._sap.atendidos[puesto]);
+    }
     console.log(`Atender ticket desde el puesto [${puesto}]`);
     if(this._sap.tickets.length == 0){return}
     let comparativo:number = 0;
@@ -44,6 +47,7 @@ export class AppcolaComponent implements OnInit {
     });
     this._sap.socket.emit('atenderticket',{id:caso._id,agente:puesto},async(callback:any) => {
       this._sap.atendidos[callback.agente] = callback;
+      this._sap.tickets.splice(this._sap.tickets.indexOf(callback),1);
     });
 
 
