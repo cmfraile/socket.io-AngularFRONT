@@ -21,15 +21,15 @@ export class ServicioappcolaService {
 
   constructor( private _hc:HttpClient ){
     
-    this.socket.on('connect',() => {
+    this.socket.on('connect',async() => {
+      await this.traertickets();
       this.conexionstatus = true ;
-      this.traertickets();
     });
     this.socket.on('disconnect',() => {this.conexionstatus = false});
   
   }
 
-  traertickets(){
+  async traertickets(){
     this._hc.get(`${this.url}/api/tickets`).pipe(tap(console.log)).subscribe((resp:any) => {
       this.tickets = [];
       resp.forEach( (x:any) => {

@@ -23,16 +23,17 @@ export class AppcolaComponent implements OnInit {
 
   }
 
-  crearticket(){
+  async crearticket(){
     /*ESTA LINEA FUNCIONA
     this._sap.socket.emit('crearticket',undefined,console.log);*/
     this._sap.socket.emit('crearticket',async(ticket:any) => {
       ticket.restante = '00:00';
       this._sap.tickets.push(ticket);
     });
+    console.log(this._sap.atendidos);
   }
 
-  atenderticket(puesto:string){
+  async atenderticket(puesto:string){
     console.log(`Atender ticket desde el puesto [${puesto}]`);
     if(this._sap.tickets.length == 0){return}
     let comparativo:number = 0;
@@ -41,7 +42,7 @@ export class AppcolaComponent implements OnInit {
       let comblando = Date.now() - Date.parse(x.creado);
       if(comblando > comparativo){caso = x}
     });
-    this._sap.socket.emit('atenderticket',{id:caso._id,puesto},async(callback:any) => {
+    this._sap.socket.emit('atenderticket',{id:caso._id,agente:puesto},async(callback:any) => {
       this._sap.atendidos[callback.agente] = callback;
     });
 

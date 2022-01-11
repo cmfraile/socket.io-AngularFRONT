@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col">
             <button routerLink="vistausuario">VISTA DEL USUARIO</button>
-            <button (click)="crearticket()" >CREAR TICKET</button>
+            <button (click)="crearticket()">CREAR TICKET</button>
             <div class="ticketempleado" *ngFor="let ti of _sap.tickets" >
                 <span>{{ti.usuario}}</span>
                 <span>{{ti.restante}}</span>
@@ -16,15 +16,15 @@
             <h3>VISTA DE EMPLEADOS:</h3>
             <div class="vistaempleado">
                 <button (click)="atenderticket('uno')" >SIGUIENTE</button>
-                <div class="atendiendo"><span *ngIf="_sap.atendidos.uno.cliente" >Atendiendo a:</span><span>{{_sap.atendidos.uno.cliente}}</span></div>
+                <div class="atendiendo"><span *ngIf="_sap.atendidos.uno.usuario" >Atendiendo a:</span><span>{{_sap.atendidos.uno.usuario}}</span></div>
             </div>
             <div class="vistaempleado">
                 <button (click)="atenderticket('dos')" >SIGUIENTE</button>
-                <div class="atendiendo"><span *ngIf="_sap.atendidos.dos.cliente" >Atendiendo a:</span><span>{{_sap.atendidos.dos.cliente}}</span></div>
+                <div class="atendiendo"><span *ngIf="_sap.atendidos.dos.usuario" >Atendiendo a:</span><span>{{_sap.atendidos.dos.usuario}}</span></div>
             </div>
             <div class="vistaempleado">
                 <button (click)="atenderticket('tres')" >SIGUIENTE</button>
-                <div class="atendiendo"><span *ngIf="_sap.atendidos.tres.cliente" >Atendiendo a:</span><span>{{_sap.atendidos.tres.cliente}}</span></div>
+                <div class="atendiendo"><span *ngIf="_sap.atendidos.tres.usuario" >Atendiendo a:</span><span>{{_sap.atendidos.tres.usuario}}</span></div>
             </div>
         </div>
     </div>
