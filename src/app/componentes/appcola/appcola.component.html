@@ -7,7 +7,7 @@
         <div class="col">
             <button routerLink="vistausuario">VISTA DEL USUARIO</button>
             <button (click)="crearticket()" >CREAR TICKET</button>
-            <div class="ticketempleado" *ngFor="let ti of tickets" >
+            <div class="ticketempleado" *ngFor="let ti of _sap.tickets" >
                 <span>{{ti.usuario}}</span>
                 <span>{{ti.restante}}</span>
             </div>

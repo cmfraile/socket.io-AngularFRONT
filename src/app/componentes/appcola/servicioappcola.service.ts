@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import arrayShuffle from 'array-shuffle';
 import { io } from 'socket.io-client';
-import { map } from 'rxjs/operators';
+import { map , tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +14,19 @@ export class ServicioappcolaService {
     dos : {},
     tres : {},
   };
-  socket = io('http://localhost:8000');
+  url:string = 'http://localhost:8000'
+  socket = io(this.url);
   conexionstatus:boolean = false;
-  
+  tickets:any[] = [];
+
   constructor( private _hc:HttpClient ){
-    this.socket.on('connect',() => {this.conexionstatus = true});
+    
+    this.socket.on('connect',() => {
+      this.conexionstatus = true ;
+      this.traertickets();
+    });
     this.socket.on('disconnect',() => {this.conexionstatus = false});
+  
   }
 
   traerpersonajes(){
@@ -31,6 +38,16 @@ export class ServicioappcolaService {
         return acumular;
       })
     );
+  }
+
+  traertickets(){
+    this._hc.get(`${this.url}/api/tickets`).pipe(tap(console.log)).subscribe((resp:any) => {
+      resp.forEach( (x:any) => {
+        if(x.llamado == null && x.agente == null){this.tickets.push(x)}else{
+          this.atendidos[`${x.agente}`] = x;
+        };
+      });
+    });
   }
   
 }
