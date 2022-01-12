@@ -48,6 +48,7 @@ export class AppcolaComponent implements OnInit {
     this._sap.socket.emit('atenderticket',{id:caso._id,agente:puesto},async(callback:any) => {
       this._sap.atendidos[callback.agente] = callback;
       this._sap.tickets.splice(this._sap.tickets.indexOf(callback),1);
+      this._sap.socket.emit('alarmaticketida');
     });
 
 

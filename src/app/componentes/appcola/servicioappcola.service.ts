@@ -28,7 +28,6 @@ export class ServicioappcolaService {
       this.conexionstatus = true ;
     });
     this.socket.on('disconnect',() => {this.conexionstatus = false});
-    this.socket.on('vuelta',console.log);
   
   }
 

@@ -9,12 +9,14 @@ import { ServicioappcolaService } from '../../servicioappcola.service';
 })
 export class VistausuarioComponent implements OnInit {
 
+  aviso = new Audio('../../assets/noti.mp3');
+  
   estado:any = {uno:false,dos:false,tres:false}
 
-  constructor( private _l:Location , public _sap:ServicioappcolaService ){
+  constructor( public _l:Location , public _sap:ServicioappcolaService ){
     
-    const aviso = new Audio('../../assets/noti.mp3') ; aviso.load();
-    
+    this.aviso.load();
+
     setInterval(() => {
       let at = this._sap.atendidos;
       for(let x in at){
@@ -23,14 +25,14 @@ export class VistausuarioComponent implements OnInit {
         if(contador >= 30){this.estado[x] = false}else{this.estado[x] = true};
       }
     },1000);
+
+    this._sap.socket.on('alarmaticketvuelta',() => {
+      console.log("ticket de vuelta")
+      this.aviso.play();
+    });
   
   }
 
   ngOnInit(): void {}
-
-  back(){
-    this._l.back();
-    //this.test.play();
-  }
 
 }
