@@ -21,16 +21,19 @@ export class ServicioappcolaService {
 
   constructor( private _hc:HttpClient ){
     
+    console.log("Tickets",this.tickets,"atendidos",this.atendidos);
+    
     this.socket.on('connect',async() => {
       await this.traertickets();
       this.conexionstatus = true ;
     });
     this.socket.on('disconnect',() => {this.conexionstatus = false});
+    this.socket.on('vuelta',console.log);
   
   }
 
   async traertickets(){
-    this._hc.get(`${this.url}/api/tickets`).pipe(tap(console.log)).subscribe((resp:any) => {
+    this._hc.get(`${this.url}/api/tickets`).subscribe((resp:any) => {
       this.tickets = [];
       resp.forEach( (x:any) => {
         if(x.llamado == null && x.agente == null){this.tickets.push(x)}else{

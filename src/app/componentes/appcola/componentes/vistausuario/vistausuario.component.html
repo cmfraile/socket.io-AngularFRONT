@@ -3,15 +3,15 @@
         <!-- <img src="../../assets/mh.jpeg" alt=""> -->
         <div class="col lista">
             <div [ngClass]="{'llamada':true,'estadotrue':estado.uno,'estadofalse':!estado.uno}">
-                <span class="usuarioatendido">{{_sap.atendidos.uno.cliente}}</span>
+                <span class="usuarioatendido">{{_sap.atendidos.uno.usuario}}</span>
                 <span>MESA 1</span>
             </div>
             <div [ngClass]="{'llamada':true,'estadotrue':estado.dos,'estadofalse':!estado.dos}">
-                <span class="usuarioatendido">{{_sap.atendidos.dos.cliente}}</span>
+                <span class="usuarioatendido">{{_sap.atendidos.dos.usuario}}</span>
                 <span>MESA 2</span>
             </div>
             <div [ngClass]="{'llamada':true,'estadotrue':estado.tres,'estadofalse':!estado.tres}">
-                <span class="usuarioatendido">{{_sap.atendidos.tres.cliente}}</span>
+                <span class="usuarioatendido">{{_sap.atendidos.tres.usuario}}</span>
                 <span>MESA 3</span>
             </div>
         </div>
