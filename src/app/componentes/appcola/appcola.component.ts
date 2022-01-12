@@ -50,18 +50,6 @@ export class AppcolaComponent implements OnInit {
       this._sap.tickets.splice(this._sap.tickets.indexOf(callback),1);
       this._sap.socket.emit('alarmaticketida');
     });
-
-
-    /*if(this.tickets.length == 0){return};
-    let comparativo:number = 0;
-    let caso!:any;
-    this.tickets.forEach( (x:any) => {
-      let comblando = Date.now() - x.fecha.getTime();
-      if(comblando > comparativo){caso = x};
-    });
-    this._sap.atendidos[puesto] = caso;
-    this._sap.atendidos[puesto].horatencion = new Date();
-    this.tickets.splice(this.tickets.indexOf(caso),1);*/
   }
 
   ngOnInit(): void {}

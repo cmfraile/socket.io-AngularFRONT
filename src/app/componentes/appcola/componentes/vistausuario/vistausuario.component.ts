@@ -26,9 +26,9 @@ export class VistausuarioComponent implements OnInit {
       }
     },1000);
 
-    this._sap.socket.on('alarmaticketvuelta',() => {
-      console.log("ticket de vuelta")
+    this._sap.socket.on('alarmaticketvuelta',async() => {
       this.aviso.play();
+      this._sap.traertickets();
     });
   
   }
