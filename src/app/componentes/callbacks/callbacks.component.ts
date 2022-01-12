@@ -1,5 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { ActivationStart } from '@angular/router';
 import { io } from 'socket.io-client';
 
 @Component({
@@ -10,12 +11,16 @@ import { io } from 'socket.io-client';
 export class CallbacksComponent implements OnInit {
 
   socket = io('http://localhost:8000');
+  aviso = new Audio('../../assets/noti.mp3');
+
   conexionstatus:boolean = false;
   data:any[] = [];
 
   constructor( public _l:Location ){
+    this.aviso.load();
     this.socket.on('connect',() => {this.conexionstatus = true});
     this.socket.on('disconnect',() => {this.conexionstatus = false});
+    this.socket.on('angular',() => {this.aviso.play()});
   }
 
   emision(){
@@ -24,6 +29,11 @@ export class CallbacksComponent implements OnInit {
       this.data.push(id);
     });
   }
+
+  cts(){
+    //this.socket.emit('cts',() => {this.aviso.play()});
+    this.socket.emit('cts');
+  };
 
   ngOnInit(): void {}
 
